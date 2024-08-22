@@ -1,3 +1,4 @@
+// This Variable is for the header of the text editor and is exported.
 const header = `
 /*
        _____  ____________

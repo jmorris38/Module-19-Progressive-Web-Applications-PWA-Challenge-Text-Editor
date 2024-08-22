@@ -1,4 +1,4 @@
-// Import methods to save and get data from the indexedDB database in './database.js'
+// Import methods to save and get data from the indexedDB database in './database.js'.
 import { getDb, putDb } from './database';
 import { header } from './header';
 
@@ -10,7 +10,7 @@ export default class {
     if (typeof CodeMirror === 'undefined') {
       throw new Error('CodeMirror is not loaded');
     }
-
+    // Create a new instance of CodeMirror and set the options.
     this.editor = CodeMirror(document.querySelector('#main'), {
       value: '',
       mode: 'javascript',
@@ -28,12 +28,12 @@ export default class {
       console.info('Loaded data from IndexedDB, injecting into editor');
       this.editor.setValue(data || localData || header);
     });
-
+    // Save the content of the editor to localStorage when the editor is changed.
     this.editor.on('change', () => {
       localStorage.setItem('content', this.editor.getValue());
     });
 
-    // Save the content of the editor when the editor itself is loses focus
+    // Save the content of the editor when the editor itself is loses focus.
     this.editor.on('blur', () => {
       console.log('The editor has lost focus');
       putDb(localStorage.getItem('content'));
